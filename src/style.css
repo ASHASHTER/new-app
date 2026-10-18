@@ -60,12 +60,13 @@ body {
   color: var(--nutrel-text);
   line-height: 1.5;
   height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   overflow: hidden;
+  margin: 0;
 }
 
 /* Background aesthetic wallpaper for desktop wrapper */
@@ -144,7 +145,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* Mobile Status Bar Simulation */
+/* Mobile Status Bar Simulation - only shown on desktop mockup preview */
 .mobile-status-bar {
   display: flex;
   justify-content: space-between;
@@ -153,6 +154,100 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--nutrel-text-muted);
+}
+
+/* ==========================================================================
+   AUTHENTIC NATIVE APP & MOBILE VIEWPORT (Edge-to-Edge Native Feel)
+   ========================================================================== */
+@media (max-width: 768px), (display-mode: standalone), (display-mode: fullscreen) {
+  body {
+    background-color: var(--nutrel-beige) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    align-items: stretch !important;
+  }
+
+  .app-viewport-wrapper {
+    max-width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    justify-content: flex-start !important;
+  }
+
+  .device-frame-bar,
+  .mobile-status-bar {
+    display: none !important;
+  }
+
+  .app-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .app-header {
+    padding-top: max(14px, env(safe-area-inset-top)) !important;
+  }
+
+  .bottom-nav {
+    height: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .main-content {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+body.is-native-app {
+  background-color: var(--nutrel-beige) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
+body.is-native-app .device-frame-bar,
+body.is-native-app .mobile-status-bar {
+  display: none !important;
+}
+
+body.is-native-app .app-viewport-wrapper {
+  max-width: 100% !important;
+  height: 100% !important;
+}
+
+body.is-native-app .app-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+body.is-native-app .app-header {
+  padding-top: max(14px, env(safe-area-inset-top)) !important;
+}
+
+body.is-native-app .bottom-nav {
+  height: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+}
+
+body.is-native-app .main-content {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
 /* Top App Header */

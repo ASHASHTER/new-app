@@ -140,6 +140,21 @@ function setupNavigation() {
 
 // Initial boot
 document.addEventListener('DOMContentLoaded', () => {
+  // Detect standalone PWA, native Capacitor, or mobile viewport
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const isCapacitor = Boolean(window.Capacitor?.isNativePlatform?.());
+  const isMobileScreen = window.innerWidth <= 768;
+
+  if (isStandalone || isCapacitor || isMobileScreen) {
+    document.body.classList.add('is-native-app');
+  }
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+      document.body.classList.add('is-native-app');
+    }
+  });
+
   setupNavigation();
   renderCurrentTab();
 
