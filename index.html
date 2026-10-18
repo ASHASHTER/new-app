@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Nutrel — Understand your food. Nutrel your life.</title>
+    <meta name="description" content="AI-Powered Nutrition Education, Tracking & Social Wellness App grounded in Indian food composition data and scientific evidence." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235F7759'><path d='M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z'/></svg>" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app-viewport-wrapper">
+      <!-- Device Frame Controls (Demonstration & Responsive Test Bar) -->
+      <div class="device-frame-bar">
+        <span>Nutrel MVP v1.0 • ICMR-NIN IFCT 2017</span>
+        <div class="device-mode-toggle">
+          <button id="btn-mode-phone" class="active">📱 Mobile View</button>
+          <button id="btn-mode-wide">💻 Tablet / Desktop</button>
+        </div>
+      </div>
+
+      <!-- Main Mobile Container -->
+      <main class="app-container" id="nutrel-app-root">
+        <!-- Top Mobile Status Bar Simulation -->
+        <header class="mobile-status-bar">
+          <span id="device-clock">09:41</span>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <span>5G</span>
+            <span>📶</span>
+            <span>🔋 98%</span>
+          </div>
+        </header>
+
+        <!-- Brand Top Navigation Header -->
+        <div class="app-header">
+          <div class="brand-wrapper">
+            <div class="brand-logo-icon">🌿</div>
+            <div>
+              <h1 class="brand-title">Nutrel</h1>
+              <div class="brand-subtitle">Understand Your Food</div>
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <div class="streak-pill" title="Daily Learning Streak">
+              🔥 <span>4d streak</span>
+            </div>
+            <button class="profile-avatar-btn" id="header-profile-btn" title="Profile & Preferences">
+              👩🏽
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Main Scrollable View Area -->
+        <section class="main-content" id="app-view-container" aria-live="polite">
+          <!-- Views rendered dynamically by main.js router -->
+        </section>
+
+        <!-- Bottom Navigation Bar (PRD Section 6) -->
+        <nav class="bottom-nav" aria-label="Main Navigation">
+          <button class="nav-item active" data-tab="home" id="nav-btn-home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+          </button>
+
+          <button class="nav-item" data-tab="learn" id="nav-btn-learn">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Learn</span>
+          </button>
+
+          <!-- Central Prominent Action Button -->
+          <button class="nav-log-action" id="nav-log-action-btn" title="Log a Meal or Food" aria-label="Log Food">
+            <span class="nav-icon">+</span>
+          </button>
+
+          <button class="nav-item" data-tab="ai" id="nav-btn-ai">
+            <span class="nav-icon">✨</span>
+            <span class="nav-label">AI Guide</span>
+          </button>
+
+          <button class="nav-item" data-tab="connect" id="nav-btn-connect">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Connect</span>
+          </button>
+        </nav>
+
+        <!-- Reusable Modal & Drawer Overlay -->
+        <div class="modal-overlay" id="app-modal-overlay" role="dialog" aria-modal="true"></div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      // Keep mobile status clock synced
+      function updateClock() {
+        const now = new Date();
+        const hrs = String(now.getHours()).padStart(2, '0');
+        const mins = String(now.getMinutes()).padStart(2, '0');
+        const clockEl = document.getElementById('device-clock');
+        if (clockEl) clockEl.textContent = `${hrs}:${mins}`;
+      }
+      setInterval(updateClock, 30000);
+      updateClock();
+    </script>
+  </body>
+</html>
